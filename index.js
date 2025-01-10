@@ -4,7 +4,7 @@ import cors from "cors";
 import helmet from "helmet";
 import dotenv from "dotenv";
 import morgan from "morgan";
-import { firebaseApp } from "./firebase.js";
+import { firebaseApp } from "./config_sample.js";
 import { getFirestore, collection, doc, getDoc, addDoc } from 'firebase/firestore/lite';
 
 // configuration
