@@ -11,7 +11,7 @@
             <h1>URL Shortener</h1>
         </header>
         <main>
-            <form>
+            <form id="url_form">
                 <div class="form-section">
                     <span>Enter base URL:</span>
                     <div style="display: flex; flex-direction: row;">
@@ -22,7 +22,7 @@
                 <div class="form-section">
                     <span>Copy Short URL:</span>
                     <div style="display: flex; flex-direction: row;">
-                        <input type="text" disabled>
+                        <input type="text" id="newurl" name="newurl" disabled>
                         <button id="copy_btn">Copy</button>
                     </div>
                 </div>

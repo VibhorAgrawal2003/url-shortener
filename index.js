@@ -4,11 +4,16 @@ import cors from "cors";
 import helmet from "helmet";
 import dotenv from "dotenv";
 import morgan from "morgan";
+import { firebaseApp } from "./firebase.js";
+import { getFirestore, collection, doc, getDoc, addDoc } from 'firebase/firestore/lite';
 
 // configuration
 dotenv.config();
 const app = express();
 const port = process.env.PORT;
+const db = getFirestore(firebaseApp);
+const links = collection(db, 'links');
+
 
 // middlewares
 app.use(express.static("public"));
@@ -30,22 +35,38 @@ app.get("/", (_req, res) => {
 
 app.get('/r/:id', (req, res) => {
     const { id } = req.params;
-    res.status(300).redirect(`/somewhere/${id}`);
+    const docRef = doc(db, 'links', id);
+
+    getDoc(docRef).then((docSnapshot) => {
+        if (docSnapshot.exists()) {
+            console.log(`Redirecting user to: https://${docSnapshot.data().baseurl}`);
+            res.status(302).redirect(`https://${docSnapshot.data().baseurl}`);
+        } else {
+            res.status(404).send("Not found");
+        }
+      }).catch((error) => {
+        console.error('Error getting original URL document:', error);
+      });
 });
 
 app.get('/somewhere/:id', (req, res) => {
     res.send("Welcome!");
 })
 
-app.post('/submit', (req, res) => {
+app.post('/submit', async (req, res) => {
     const { baseurl } = req.body;
-    console.log(`url: ${baseurl}`);
-    const regex = /(http(s)?:\/\/.)?(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/;
+    try {
+        const urlDocRef = await addDoc(collection(db, 'links'), {
+            baseurl: baseurl,
+        });
 
-    if (!regex.test(baseurl)) {
-      return res.status(400).json({ status: "Invalid URL" });
+        const newurl = `${req.get('host')}/r/${urlDocRef.id}`
+        res.status(200).json({status: "OK", newurl });
+
+    } catch (error) {
+        console.error('Error adding user:', error);
+        res.status(500).json({ status: 'Error', message: 'Failed to add user' });
     }
-    res.status(200).json({status: "OK"});
 });
 
 app.listen(port, () => {
