@@ -1,0 +1,36 @@
+{
+  "name": "url-shortener",
+  "version": "1.0.0",
+  "description": "A simple web application to produce short URLs.",
+  "main": "index.js",
+  "scripts": {
+    "test": "nodemon index.js",
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/VibhorAgrawal2003/url-shortener.git"
+  },
+  "keywords": [
+    "url"
+  ],
+  "author": "Vibhor Agrawal",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/VibhorAgrawal2003/url-shortener/issues"
+  },
+  "homepage": "https://github.com/VibhorAgrawal2003/url-shortener#readme",
+  "type": "module",
+  "devDependencies": {
+    "nodemon": "^3.1.9"
+  },
+  "dependencies": {
+    "body-parser": "^1.20.3",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.7",
+    "ejs": "^3.1.10",
+    "express": "^4.21.2",
+    "helmet": "^8.0.0",
+    "morgan": "^1.10.0"
+  }
+}

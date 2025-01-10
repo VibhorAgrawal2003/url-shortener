@@ -1,0 +1,10 @@
+input {
+    width: 100%;
+    border: 1px solid grey;
+    border-radius: 2px;
+}
+
+.form-section {
+    width: 16em;
+    margin: 1em 0;
+}
