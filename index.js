@@ -4,7 +4,7 @@ import cors from "cors";
 import helmet from "helmet";
 import dotenv from "dotenv";
 import morgan from "morgan";
-import { firebaseApp } from "./config_sample.js";
+import { firebaseApp } from "./config.js";
 import { getFirestore, collection, doc, getDoc, addDoc } from 'firebase/firestore/lite';
 
 // configuration
@@ -58,6 +58,7 @@ app.post('/submit', async (req, res) => {
     try {
         const urlDocRef = await addDoc(collection(db, 'links'), {
             baseurl: baseurl,
+            createdAt: Date.now()
         });
 
         const newurl = `${req.get('host')}/r/${urlDocRef.id}`

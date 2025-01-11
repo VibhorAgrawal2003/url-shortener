@@ -3,30 +3,34 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>URL Shortener</title>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
         <link rel="stylesheet" href="/styles.css">
         <script src="script.js" defer></script>
     </head>
     <body>
         <header>
-            <h1>URL Shortener</h1>
+            <h1>Chip URL Shortener</h1>
         </header>
         <main>
             <form id="url_form">
                 <div class="form-section">
-                    <span>Enter base URL:</span>
-                    <div style="display: flex; flex-direction: row;">
+                    <span class="label">Enter Base URL:</span>
+                    <div class="input-section">
                         <input type="text" id="baseurl" name="baseurl">
-                        <button id="fetch_btn">Fetch</button>
+                        <button class="btn" id="fetch_btn">Fetch</button>
                     </div>
                 </div>
                 <div class="form-section">
-                    <span>Copy Short URL:</span>
-                    <div style="display: flex; flex-direction: row;">
+                    <span class="label">Copy Short URL:</span>
+                    <div class="input-section">
                         <input type="text" id="newurl" name="newurl" disabled>
-                        <button id="copy_btn">Copy</button>
+                        <button class="btn" id="copy_btn">Copy</button>
                     </div>
                 </div>
             </form>    
         </main>
+        <footer>
+            <a href="https://github.com/VibhorAgrawal2003/url-shortener">Free and open source tool to shorten a long link. &#127803;</a>
+        </footer>
     </body>
 </html>

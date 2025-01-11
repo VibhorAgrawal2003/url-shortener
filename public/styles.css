@@ -1,10 +1,114 @@
-input {
-    width: 100%;
-    border: 1px solid grey;
-    border-radius: 2px;
+body {
+    font-family: 'Montserrat', sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: #f7f9fc;
+    color: #333;
+    min-height: 80vh;
+    padding: 0 1em;
+}
+
+header h1 {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 1.5em;
+    color: #4a63f1;
+}
+
+main {
+    width: 90%;
+    max-width: 500px;
+}
+
+footer {
+    position: fixed;
+    bottom: 4em;
+    font-size: 0.8rem;
+}
+
+footer a {
+    text-decoration: none;
 }
 
 .form-section {
-    width: 24em;
-    margin: 1em 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.6em;
+    margin-bottom: 1.5em;
+}
+
+.label {
+    font-size: 0.9rem;
+    color: #000;
+    font-weight: 500;
+}
+
+.input-section {
+    display: flex;
+    gap: 0.5em;
+}
+
+input[type="text"] {
+    flex: 1;
+    padding: 0.6em;
+    border: 1px solid #aaa;
+    border-radius: 5px;
+    font-size: 1rem;
+}
+
+input[type="text"]:focus {
+    outline: none;
+    border-color: #7f8ff4;
+    box-shadow: 0 0 3px rgba(127, 143, 244, 0.5);
+}
+
+.btn {
+    display: inline-block;
+    background: #7f8ff4;
+    color: #fff;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+    width: 6rem;
+    padding: 0.6em 1em;
+    font-size: 1rem;
+    transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.btn:hover {
+    background: #5a6fd4;
+    transform: scale(1.05);
+}
+
+.btn:active {
+    background: #4a63f1;
+}
+
+#newurl[disabled] {
+    background-color: #f0f0f0;
+    color: #999;
+}
+
+@media (max-width: 480px) {
+    .input-section {
+        flex-direction: column;
+        gap: 0.8em;
+    }
+
+    .btn {
+        width: 100%;
+        padding: 0.6em;
+    }
+
+    input[type="text"] {
+        font-size: 0.9rem;
+    }
+
+    footer {
+        width: 50%;
+        bottom: 2em;
+        font-size: 0.75rem;
+    }
 }
