@@ -49,10 +49,6 @@ app.get('/r/:id', (req, res) => {
       });
 });
 
-app.get('/somewhere/:id', (req, res) => {
-    res.send("Welcome!");
-})
-
 app.post('/submit', async (req, res) => {
     const { baseurl } = req.body;
     try {
@@ -65,8 +61,8 @@ app.post('/submit', async (req, res) => {
         res.status(200).json({status: "OK", newurl });
 
     } catch (error) {
-        console.error('Error adding user:', error);
-        res.status(500).json({ status: 'Error', message: 'Failed to add user' });
+        console.error('Error adding URL:', error);
+        res.status(500).json({ status: 'Error', message: 'Failed to add URL' });
     }
 });
 
