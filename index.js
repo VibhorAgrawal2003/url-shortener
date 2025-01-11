@@ -12,8 +12,6 @@ dotenv.config();
 const app = express();
 const port = process.env.PORT;
 const db = getFirestore(firebaseApp);
-const links = collection(db, 'links');
-
 
 // middlewares
 app.use(express.static("public"));
